@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ring Oscillator PUF Analysis Report</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 40px; }
+h1 { color: #2c3e50; }
+h2 { color: #3498db; }
+table { border-collapse: collapse; width: 100%; }
+th, td { text-align: left; padding: 8px; border: 1px solid #ddd; }
+th { background-color: #f2f2f2; }
+.metric { font-weight: bold; }
+</style>
+</head>
+<body>
+<h1>Ring Oscillator PUF Analysis Report</h1>
+<p>Date: 2025-04-17 14:00:42</p>
+<h2>Data Summary</h2>
+<p>Number of samples: 30</p>
+<p>Number of bits per response: 6</p>
+<h3>Raw Response Data</h3>
+<table>
+<tr><th>Sample</th><th>Bit 1</th><th>Bit 2</th><th>Bit 3</th><th>Bit 4</th><th>Bit 5</th><th>Bit 6</th></tr>
+<tr><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td></tr>
+<tr><td>2</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+<tr><td>3</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+<tr><td>4</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td></tr>
+<tr><td>5</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+<tr><td>6</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+<tr><td>7</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+<tr><td>8</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td></tr>
+<tr><td>9</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td></tr>
+<tr><td>10</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td></tr>
+<tr><td>11</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>12</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td></tr>
+<tr><td>13</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>14</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+<tr><td>15</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td></tr>
+<tr><td>16</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+<tr><td>17</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+<tr><td>18</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+<tr><td>19</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+<tr><td>20</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+</table>
+<h2>Reliability Analysis</h2>
+<p class="metric">Overall Reliability: 60.00%</p>
+<p>Most Reliable Bit: 4 (70.00%)</p>
+<p>Least Reliable Bit: 3 (53.33%)</p>
+<p>Ideal reliability is 100% (perfect reproducibility).</p>
+<h2>Uniqueness Analysis</h2>
+<p class="metric">Average Hamming Distance: 6.00 bits (100.00%)</p>
+<p>Ideal uniqueness is 50% (maximum entropy).</p>
+<h2>Entropy Analysis</h2>
+<p class="metric">Total Entropy: 5.77 bits (96.19% of maximum)</p>
+<h3>Bit Bias</h3>
+<table>
+<tr><th>Bit Position</th><th>Probability of 1</th><th>Entropy</th></tr>
+<tr><td>1</td><td>0.4333</td><td>0.9871 bits</td></tr>
+<tr><td>2</td><td>0.3667</td><td>0.9481 bits</td></tr>
+<tr><td>3</td><td>0.5333</td><td>0.9968 bits</td></tr>
+<tr><td>4</td><td>0.7000</td><td>0.8813 bits</td></tr>
+<tr><td>5</td><td>0.4000</td><td>0.9710 bits</td></tr>
+<tr><td>6</td><td>0.5667</td><td>0.9871 bits</td></tr>
+</table>
+<p>Ideal bit bias is 0.5 (equal probability of 0 and 1).</p>
+<h2>Conclusions</h2>
+<p>Based on the analysis, this Ring Oscillator PUF implementation shows:
+<br>- <strong>Moderate reliability</strong> (60.00%), suggesting some variability in responses.<br>- <strong>Limited uniqueness</strong> (100.00%), deviating from the ideal value of 50%.<br>- <strong>High entropy</strong> (96.19% of maximum), suggesting good randomness properties.</p>
+<h2>Implementation Challenges</h2>
+<p>Implementing Ring Oscillator PUFs on FPGAs presents several challenges:</p>
+<ul>
+<li>Synthesis tools may optimize away oscillator loops, reducing entropy</li>
+<li>FPGA architectures are more deterministic than ASICs, limiting manufacturing variations</li>
+<li>Routing constraints can make oscillator paths more uniform than desired</li>
+<li>Temperature and voltage variations affect oscillator behavior</li>
+</ul>
+</body>
+</html>
