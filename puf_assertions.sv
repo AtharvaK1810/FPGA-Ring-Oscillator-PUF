@@ -1,5 +1,5 @@
 // Checker to ensure UART TX does not start if the system is in reset
-// or if the previous transmission is not yet complete
+// or if the previous transmission is not yet complete.
 module puf_assertions (
     input logic clk,
     input logic reset_n,
